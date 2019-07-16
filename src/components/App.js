@@ -2,12 +2,12 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { testFunction } from 'actions';
 
-const dispatchTest = dispatch => dispatch(testFunction());
+const incrementCount = (dispatch, count) => dispatch(testFunction(count));
 
 const App = () => {
-  const test = useSelector(state => state.test);
+  const count = useSelector(state => state.test);
   const dispatch = useDispatch();
-  return <button onClick={() => dispatchTest(dispatch)}>{test ? 'World' : 'Hello'}</button>;
+  return <button onClick={() => incrementCount(dispatch, count)}>{count}</button>;
 };
 
 export default App;
