@@ -6,9 +6,7 @@ import { createStore } from 'redux';
 import App from 'components/App';
 import reducers from 'reducers';
 
-const INITIAL_STATE = {
-  test: null
-};
+const INITIAL_STATE = {};
 
 const store = createStore(
   reducers,

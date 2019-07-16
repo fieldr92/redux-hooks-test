@@ -1,35 +1,13 @@
-import React, { Component } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { testFunction } from 'actions';
 
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+const dispatchTest = dispatch => dispatch(testFunction());
 
-class App extends Component {
-  clickButton = e => {
-    e.preventDefault();
-    this.props.testFunction();
-  };
-
-  render() {
-    return <button onClick={this.clickButton}>Add things</button>;
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    test: state.test
-  };
+const App = () => {
+  const test = useSelector(state => state.test);
+  const dispatch = useDispatch();
+  return <button onClick={() => dispatchTest(dispatch)}>{test ? 'World' : 'Hello'}</button>;
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(App);
-
-// const App = () => {
-//   const test = useSelector(state => state);
-//   const dispatch = useDispatch();
-//   return <button onClick={e => dispatch({ type: 'TEST', payload: 'test' })}>{test ? 'Hello' : 'World'}</button>;
-// };
-
-// export default App;
+export default App;
